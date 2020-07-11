@@ -12,6 +12,9 @@ typedef tipoNodo *pNodo;
 void push(pNodo *inicio, int v);
 int pop(pNodo *inicio);
 int primerValor(pNodo *inicio);
+int menorC(pNodo *arrive, pNodo *burst, int te);
+int sizeC(pNodo *inicio);
+void imprimirCola(pNodo *arrive,pNodo *burst);
 
 void push(pNodo *inicio, int v)
 {
@@ -59,4 +62,69 @@ int primerValor(pNodo *inicio){
 		v = (*inicio)->valor;
 		return v;
 	}
+}
+
+int menorC(pNodo *arrive, pNodo *burst, int te){
+	int i = 0, vB, vA, menorB = 0, menorA = 0;
+	pNodo nodoB = *burst, nodoA = *arrive;
+	pNodo auxB = NULL, auxA = NULL;
+	if(!*burst){
+		return -1;
+	}
+	menorA = pop(&nodoA);
+	menorB = pop(&nodoB);
+	push(&auxA,menorA);	
+	push(&auxB,menorB);
+	while(vA!=-1){
+		vA = pop(&nodoA);
+		vB = pop(&nodoB);
+		if(menorB>vB && vA<=te && vB!=-1){
+			menorB = vB;
+		}
+		push(&auxA,vA);
+		push(&auxB,vB);
+		i++;
+	}
+	*burst = auxB;
+	*arrive = auxA;
+
+	return menorB;
+}
+
+int sizeC(pNodo *inicio){
+	pNodo nodo = *inicio;
+	int k=0;
+	if(!*inicio){
+		return 0;
+	}
+	pNodo nodoA = *inicio;
+	pNodo auxA = NULL;
+	int a=pop(&nodoA);
+	while(a!=-1){
+		push(&auxA,a);
+		a =pop(&nodoA);
+		k++;
+	}
+	nodoA = auxA;
+	return k;
+}
+
+void imprimirCola(pNodo *arrive,pNodo *burst){
+	pNodo nodoA = *arrive, nodoB = *burst;
+	pNodo auxA = NULL, auxB = NULL;
+	int a, b;
+
+	a =pop(&nodoA);
+	b =pop(&nodoB);
+	while(a!=-1){
+		printf("%d %d\n",a,b);
+		push(&auxA,a);
+		push(&auxB,b);
+		a =pop(&nodoA);
+		b =pop(&nodoB);
+	}
+
+	*arrive = auxA;
+	*burst = auxB;
+	
 }

@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
 
 			for(i = 0; i < N-1; i++){
 				for(k = 0; k < N-1; k++){
-					if(procesos[0][k]<procesos[0][k+1]){
+					if(procesos[0][k]>procesos[0][k+1]){
 						aux[0]=procesos[0][k];
 						aux[1]=procesos[1][k];
 
