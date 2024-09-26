@@ -1,5 +1,3 @@
-#  PROYECTO DE SISTEMAS OPERATIVOS 
-## Nombre: Tony Veas
 ## Antecedentes del problema  
 El presente proyecto tratara de simular los algoritmos de planificación de procesos, descritos en el curso y en el capítulo 5 del texto guía “Operating System Concepts” 10th edition by Silberschatz, FCFS, SJF y Round Robind, usando una cola solo para interrupciones y una cola para procesos nuevos. Este proyecto contiene tres ejecutables separados: un simulador del Planificador schedsim, un generador de llegada de proceso schedgen y un programa de estadísticas y tiempos schedstats que produce archivos de datos consolidados utilizados para gráficos de rendimiento.
 ## Uso de los programas  
